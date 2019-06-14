@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Pick the register you want to update{% endblock %}
+
+{% block body %}
+<div>
+    <h1 class="govuk-heading-xl">Welcome to Digital Land Registers</h1>
+    <p class="govuk-body">The place to be to update your cool and funky registers</p>
+</div>
+
+
+<div class="app-prose-scope">
+    <div>
+        <h2 class="govuk-heading-l">Please select the register you wish to update</h2>
+    </div>
+    <ul class="govuk-list">
+        {% for schema in schemas %}
+        {% set schema_name = schema | replace('-schema.json', '') %}
+        <li>
+            <a class="govuk-link" href="{{url_for('frontend.dynamic_form', schema=schema_name)}}">{{ schema_name }}</a>
+        </li>
+
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

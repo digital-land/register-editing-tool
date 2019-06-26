@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Check your input{% endblock %}
+
+{% block body %}
+
+<div>
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+</div>
+
+<div class="app-prose-scope">
+
+    <p class="govuk-body">Hello, would you like to check your input?</p>
+
+    <dl class="govuk-summary-list">
+        {% for data_item in data %}
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                {{ data_item[0]}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+                {{ data_item[1] }}
+            </dd>
+        </div>
+        {% endfor %}
+    </dl>
+    <button onclick="location.href='complete'"  type="submit" class="govuk-button">
+        Confirm
+    </button>
+
+    <button onclick="location.href='edit'" type="submit" class="govuk-button">
+        Edit
+    </button>
+</div>
+
+{% endblock %}
+

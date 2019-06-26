@@ -1,5 +1,6 @@
 import csv
 
+from datetime import date, datetime
 
 def update_csv(file_name, data):
     data_array = list(data.values())
@@ -41,3 +42,15 @@ def convert_ordered_dicts_for_dl(data):
             key = remove_dashes(x)
             data_list.append([key, y])
     return data_list
+
+
+def json_serialiser(form_data):
+    """JSON serializer for objects not serializable by default json code"""
+
+    entry_data = {}
+    for k, v in form_data.items():
+        if isinstance(v, (datetime, date)):
+            entry_data[k] = v.isoformat()
+        else:
+            entry_data[k] = v
+    return entry_data

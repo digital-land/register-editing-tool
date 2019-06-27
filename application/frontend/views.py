@@ -66,3 +66,9 @@ def edit(schema, row):
 
     return render_template('dynamicform.html', form=form, schema=schema, title=title)
 
+
+# set the assetPath variable for use in
+# jinja templates
+@frontend.context_processor
+def asset_path_context_processor():
+    return {'assetPath': '/static/govuk-frontend/assets'}
